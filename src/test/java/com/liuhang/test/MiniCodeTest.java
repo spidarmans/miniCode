@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.alibaba.fastjson.JSON;
 import com.liuhang.constant.Constants;
 
@@ -11,24 +13,23 @@ public class MiniCodeTest {
 	/**
 	 * 存放Fizz数字的list集合
 	 */
-	private static List<Integer> fizzList = new ArrayList<Integer>();
+	private List<Integer> fizzList = new ArrayList<Integer>();
 	/**
 	 * 存放Buzz数字的list集合
 	 */
-	private static List<Integer> buzzList = new ArrayList<Integer>();
+	private List<Integer> buzzList = new ArrayList<Integer>();
 
 	/**
 	 * 存放FizzBuzz数字的list集合
 	 */
-	private static List<Integer> fizzBuzzList = new ArrayList<Integer>();
+	private List<Integer> fizzBuzzList = new ArrayList<Integer>();
 	
 	/**
 	 * 临时存放游戏规则的结果数字
 	 */
-	private static String tempNum = "";
-
-	
-	public static void main(String[] args) {
+	private String tempNum = "";
+	@Test
+	public void miniCodeTest() {
 		/*遍历1-100自然数*/
 		for (int num = 1; num <= 100; num++) {
 			/*打印1-100游戏结果*/
@@ -60,7 +61,7 @@ public class MiniCodeTest {
 	 * 打印1-100游戏结果
 	 * @param num
 	 */
-	private static void printGameNum(int num) {
+	private void printGameNum(int num) {
 		tempNum = String.valueOf(num);
 		if(num%Constants.FIVE==Constants.ZERO){
 			tempNum = Constants.BUZZ;
@@ -76,7 +77,7 @@ public class MiniCodeTest {
 	 * @param num
 	 * @return
 	 */
-	private static boolean buzzCondition(int num) {
+	private boolean buzzCondition(int num) {
 		return num%Constants.FIVE==Constants.ZERO || String.valueOf(num).indexOf(String.valueOf(Constants.FIVE))>=0;
 	}
 
@@ -85,7 +86,7 @@ public class MiniCodeTest {
 	 * @param num
 	 * @return
 	 */
-	private static boolean fizzCondition(int num) {
+	private boolean fizzCondition(int num) {
 		return num%Constants.THREE==Constants.ZERO || String.valueOf(num).indexOf(String.valueOf(Constants.THREE))>=0;
 	}
 	
@@ -94,8 +95,9 @@ public class MiniCodeTest {
 	 * @param num
 	 * @return
 	 */
-	private static boolean fizzBuzzCondition(int num) {
-		return num%Constants.THREE==Constants.ZERO && num%Constants.FIVE==Constants.ZERO;
+	private boolean fizzBuzzCondition(int num) {
+		return (num%Constants.THREE==Constants.ZERO && num%Constants.FIVE==Constants.ZERO) 
+				|| (String.valueOf(num).indexOf(String.valueOf(Constants.THREE))>=0 && String.valueOf(num).indexOf(String.valueOf(Constants.FIVE))>=0);
 	}
 
 }
